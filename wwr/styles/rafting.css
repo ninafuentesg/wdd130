@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* ========== CSS Variables ========== */
 :root {
     --body-font: Arial, sans-serif;
@@ -7,12 +13,6 @@
     --accent2-color: #ffffff;      /* Blanco para textos y contrastes */
 }
 
-/* ========== Universal Selector Reset ========== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 /* ========== Body & Layout ========== */
 body {
