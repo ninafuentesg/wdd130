@@ -4,7 +4,7 @@
     padding: 0; 
 }
 
-/* VARIABLES (Se mantienen tus colores: Azul oscuro y Amarillo/Mostaza) */
+
 :root{
     --primary-color: #023859;
     --secondary-color: #F2DC6B;
@@ -18,7 +18,7 @@
     --max-content-width: 1200px;
 }
 
-/* BODY */
+
 body {
     font-family: var(--body-font);
     background: var(--bg-color);
@@ -26,14 +26,14 @@ body {
 }
 
 
-/* --- Header y Navegación (Header muy delgado) --- */
+
 
 header {
     display: grid;
-    /* AJUSTE 2: Reducir la columna del logo a 120px */
+   
     grid-template-columns: 120px auto; 
     align-items: center;
-    /* AJUSTE 1: Reducir el padding vertical a 0.5rem (muy delgado) */
+   
     padding: 0.5rem 2%; 
     background-color: var(--primary-color);
     color: white;
@@ -42,7 +42,7 @@ header {
 
 .logo {
     padding: 0;
-    /* Reducir el max-width del contenedor a 120px */
+    
     max-width: 120px;
     display: flex;
     align-items: center; 
@@ -53,7 +53,7 @@ header {
     width: 100%;
     height: auto;
     display: block;
-    /* AJUSTE 3: Reducir el max-width del logo a 100px */
+   
     max-width: 100px; 
     margin: 0 auto; 
 }
@@ -81,7 +81,7 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* --- Secciones Principales --- */
+
 
 main {
     max-width: var(--max-content-width);
@@ -89,9 +89,9 @@ main {
     padding: 0 20px;
 }
 
-/* 1. SECCIÓN HERO (Ajustada al Wireframe: Imagen completa, Contenido superpuesto y centrado) */
+
 .hero {
-    /* Contenedor Flex para centrar el título y la caja */
+  
     position: relative;
     min-height: 450px; 
     margin-bottom: 2rem;
@@ -101,7 +101,7 @@ main {
     justify-content: flex-start;
 }
 
-/* La imagen de fondo cubre el contenedor Hero */
+
 .hero > img {
     position: absolute;
     top: 0;
@@ -113,7 +113,7 @@ main {
     z-index: 1;
 }
 
-/* El título se coloca sobre la imagen */
+
 .hero h1 {
     color: white;
     font-size: 3.5rem;
@@ -125,21 +125,21 @@ main {
     text-align: center;
 }
 
-/* La caja de contenido superpuesta (blanca) */
+
 .hero-content-box {
     background-color: var(--panel-color);
     padding: 2rem;
-    max-width: 800px; /* Ancho similar al del wireframe */
+    max-width: 800px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    display: flex; /* Flexbox para colocar el texto y la imagen pequeña */
+    display: flex; 
     gap: 20px;
     align-items: flex-start;
     z-index: 2;
     margin-bottom: 40px; 
 }
 
-/* Estilo para el título interno de la misión, si lo tienes (<h2>) */
+
 .hero-content-box h2 {
     color: var(--primary-color);
     margin-top: 0;
@@ -150,7 +150,7 @@ main {
     line-height: 1.6;
 }
 
-/* Estilo para la imagen pequeña (hero-thumb) dentro de la caja */
+
 .hero-content-box .hero-thumb {
     width: 100px;
     height: 100px;
@@ -162,7 +162,7 @@ main {
 }
 
 
-/* --- 2. History Section (Ajustado a 3 columnas) --- */
+
 .history-section {
     padding: 2.5rem 0;
     text-align: center;
@@ -176,7 +176,7 @@ main {
 }
 
 .history-grid {
-    /* **GRID** de 3 columnas: Texto | Imagen | Texto */
+   
     display: grid;
     grid-template-columns: 1fr 200px 1fr; 
     gap: 20px;
@@ -196,7 +196,7 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Adventures Section Layout --- */
+
 .adventures {
     padding: 3rem 0;
     text-align: center;
@@ -241,7 +241,7 @@ main {
     margin-top: -1px;
 }
 
-/* --- Estilos del Footer --- */
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -273,11 +273,10 @@ footer p {
 }
 
 
-/* --- Media Queries (Responsividad) --- */
 
 @media screen and (max-width: 900px) {
     .history-grid {
-        grid-template-columns: 1fr; /* Colapsa a una columna para la historia */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
     .history-grid .hist-text {
