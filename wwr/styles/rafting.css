@@ -4,7 +4,7 @@
     padding: 0; 
 }
 
-/* VARIABLES (Se elimina --border-color por no estar en uso) */
+
 :root{
     --primary-color: #023859;
     --secondary-color: #F2DC6B;
@@ -25,7 +25,7 @@ body {
 }
 
 
-/* --- Header y Navegación (Muy Delgado) --- */
+
 header {
     display: grid;
     grid-template-columns: 120px auto; 
@@ -76,7 +76,7 @@ nav a:hover {
 }
 
 
-/* --- Secciones Principales --- */
+
 main {
     max-width: var(--max-content-width);
     margin: 0 auto;
@@ -84,9 +84,9 @@ main {
 }
 
 
-/* 1. SECCIÓN HERO (Ajuste crítico para Overlay - position: absolute) */
+
 .hero {
-    position: relative; /* CRÍTICO: Base para posicionamiento absoluto */
+    position: relative; 
     min-height: 450px; 
     margin-bottom: 2rem;
     display: flex;
@@ -116,28 +116,29 @@ main {
     z-index: 2;
     text-align: center;
     
-    /* CORRECCIÓN: Posicionamiento absoluto y centrado para Overlay */
+  
     position: absolute; 
     top: 10%; 
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 0; /* Eliminar padding-top redundante */
-    margin-bottom: 0; /* Eliminar margin-bottom redundante */
+    padding-top: 0; 
+    margin-bottom: 0; 
     width: 90%;
 }
 
-/* La caja de contenido superpuesta (ahora <article>) */
+
 .hero-content-box {
     background-color: var(--panel-color);
     padding: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    
     display: flex; 
     gap: 20px;
     align-items: flex-start;
     z-index: 2;
     
-    /* CORRECCIÓN: Posicionamiento absoluto y centrado para Overlay */
+   
     position: absolute; 
     bottom: 40px; 
     left: 50%;
@@ -154,7 +155,7 @@ main {
 }
 
 .hero-content-box p {
-    flex: 1; 
+   
     line-height: 1.6;
 }
 
@@ -167,10 +168,16 @@ main {
     flex-shrink: 0;
     filter: none;
     margin-top: 5px;
+    
+   
+    float: right; 
+    margin-left: 15px;
 }
 
 
-/* --- 2. History Section (3 Column Grid) --- */
+
+
+
 .history-section {
     padding: 2.5rem 0;
     text-align: center;
@@ -204,7 +211,7 @@ main {
 }
 
 
-/* --- Adventures Section Layout --- */
+
 .adventures {
     padding: 3rem 0;
     text-align: center;
@@ -250,7 +257,7 @@ main {
 }
 
 
-/* --- Estilos del Footer --- */
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -267,8 +274,6 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* La nueva etiqueta <nav class="socialmedia"> debe usar estos estilos */
-/* Si el HTML final usa class="socialmedia", simplemente renombra .social-links a .socialmedia */
 .social-links, .socialmedia { 
     display: flex;
     gap: 15px;
@@ -284,7 +289,7 @@ footer p {
 }
 
 
-/* --- Media Queries (Responsividad) --- */
+
 
 @media screen and (max-width: 900px) {
     .history-grid {
@@ -307,19 +312,27 @@ footer p {
         flex: 1 1 40%;
     }
     
-    /* Ajuste para el overlay en móviles */
+   
     .hero h1 {
-        position: static; /* Volver a flujo normal en móviles */
+        position: static; 
         transform: none;
         padding-top: 20px;
     }
     .hero-content-box {
-        position: static; /* Volver a flujo normal en móviles */
+        position: static; 
         transform: none;
         margin-bottom: 20px;
+        
+        display: block; 
     }
     .hero {
         min-height: auto;
+    }
+   
+    .hero-content-box .hero-thumb {
+        float: none;
+        margin: 10px auto;
+        display: block;
     }
 }
 
