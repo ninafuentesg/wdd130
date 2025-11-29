@@ -4,14 +4,13 @@
     padding: 0; 
 }
 
-
+/* VARIABLES (Se elimina --border-color por no estar en uso) */
 :root{
     --primary-color: #023859;
     --secondary-color: #F2DC6B;
     --bg-color: #f1f1f1;
     --panel-color: #ffffff;
     --text-color: #222;
-    --border-color: #d8d8d8;
     
     --heading-font: 'Georgia', serif;
     --body-font: 'Arial', sans-serif;
@@ -26,14 +25,11 @@ body {
 }
 
 
-
-
+/* --- Header y Navegación (Muy Delgado) --- */
 header {
     display: grid;
-   
     grid-template-columns: 120px auto; 
     align-items: center;
-   
     padding: 0.5rem 2%; 
     background-color: var(--primary-color);
     color: white;
@@ -42,7 +38,6 @@ header {
 
 .logo {
     padding: 0;
-    
     max-width: 120px;
     display: flex;
     align-items: center; 
@@ -53,7 +48,6 @@ header {
     width: 100%;
     height: auto;
     display: block;
-   
     max-width: 100px; 
     margin: 0 auto; 
 }
@@ -82,7 +76,7 @@ nav a:hover {
 }
 
 
-
+/* --- Secciones Principales --- */
 main {
     max-width: var(--max-content-width);
     margin: 0 auto;
@@ -90,9 +84,9 @@ main {
 }
 
 
+/* 1. SECCIÓN HERO (Ajuste crítico para Overlay - position: absolute) */
 .hero {
-  
-    position: relative;
+    position: relative; /* CRÍTICO: Base para posicionamiento absoluto */
     min-height: 450px; 
     margin-bottom: 2rem;
     display: flex;
@@ -120,23 +114,37 @@ main {
     font-family: var(--heading-font);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     z-index: 2;
-    padding-top: 50px;
-    margin-bottom: 20px;
     text-align: center;
+    
+    /* CORRECCIÓN: Posicionamiento absoluto y centrado para Overlay */
+    position: absolute; 
+    top: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0; /* Eliminar padding-top redundante */
+    margin-bottom: 0; /* Eliminar margin-bottom redundante */
+    width: 90%;
 }
 
-
+/* La caja de contenido superpuesta (ahora <article>) */
 .hero-content-box {
     background-color: var(--panel-color);
     padding: 2rem;
-    max-width: 800px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     display: flex; 
     gap: 20px;
     align-items: flex-start;
     z-index: 2;
-    margin-bottom: 40px; 
+    
+    /* CORRECCIÓN: Posicionamiento absoluto y centrado para Overlay */
+    position: absolute; 
+    bottom: 40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px; 
+    margin-bottom: 0; 
 }
 
 
@@ -162,7 +170,7 @@ main {
 }
 
 
-
+/* --- 2. History Section (3 Column Grid) --- */
 .history-section {
     padding: 2.5rem 0;
     text-align: center;
@@ -176,7 +184,6 @@ main {
 }
 
 .history-grid {
-   
     display: grid;
     grid-template-columns: 1fr 200px 1fr; 
     gap: 20px;
@@ -197,6 +204,7 @@ main {
 }
 
 
+/* --- Adventures Section Layout --- */
 .adventures {
     padding: 3rem 0;
     text-align: center;
@@ -242,6 +250,7 @@ main {
 }
 
 
+/* --- Estilos del Footer --- */
 footer {
     display: flex;
     justify-content: space-between;
@@ -258,12 +267,14 @@ footer p {
     font-size: 0.9rem;
 }
 
-.social-links {
+/* La nueva etiqueta <nav class="socialmedia"> debe usar estos estilos */
+/* Si el HTML final usa class="socialmedia", simplemente renombra .social-links a .socialmedia */
+.social-links, .socialmedia { 
     display: flex;
     gap: 15px;
 }
 
-.social-links a img {
+.social-links a img, .socialmedia a img {
     width: 30px;
     height: 30px;
     background: var(--bg-color);
@@ -273,6 +284,7 @@ footer p {
 }
 
 
+/* --- Media Queries (Responsividad) --- */
 
 @media screen and (max-width: 900px) {
     .history-grid {
@@ -293,6 +305,21 @@ footer p {
     
     .adventure-gallery figure {
         flex: 1 1 40%;
+    }
+    
+    /* Ajuste para el overlay en móviles */
+    .hero h1 {
+        position: static; /* Volver a flujo normal en móviles */
+        transform: none;
+        padding-top: 20px;
+    }
+    .hero-content-box {
+        position: static; /* Volver a flujo normal en móviles */
+        transform: none;
+        margin-bottom: 20px;
+    }
+    .hero {
+        min-height: auto;
     }
 }
 
