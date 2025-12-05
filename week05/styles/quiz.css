@@ -1,0 +1,114 @@
+:root {
+    --color-dark-teal: #024554;
+    --color-gray-teal: #53736A;
+    --color-muted-green: #ffff;
+    --color-lime-green: #ABB545;
+    --color-tan-silver: #C2C0A6;
+
+    --bg-light-gray: var(--color-muted-green);
+    --form-bg-white: var(--color-tan-silver);
+    --primary-button: var(--color-dark-teal);
+    --accent-teal: var(--color-gray-teal);
+    --dark-text: var(--color-dark-teal);
+    --code-bg-dark: var(--color-gray-teal);
+    --code-text-light: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light-gray);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    background-color: var(--form-bg-white);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-title {
+    font-size: 1.8em;
+    color: var(--dark-text);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-text);
+    font-size: 1em;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--accent-teal);
+    background-color: white;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); 
+}
+
+.code-snippet {
+    background-color: var(--code-bg-dark); 
+    color: var(--code-text-light);
+    font-family: 'Courier New', monospace;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: var(--primary-button); 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--color-lime-green); 
+    color: var(--color-dark-teal); 
+}
+
+.example-text {
+    text-align: center;
+    color: var(--dark-text);
+    font-size: 0.9em;
+    margin-top: 10px;
+}
