@@ -21,6 +21,9 @@ body {
     font-family: var(--body-font);
     background: var(--bg-color);
     color: var(--text-color);
+    /* 🛑 CORRECCIÓN CLAVE 1: Evita el scroll horizontal en todo el cuerpo */
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 
@@ -81,7 +84,8 @@ main {
 }
 
 
-.hero {
+/* --- HERO STYLES (Aplicados a #hero y #hero-img según tu HTML) --- */
+#hero {
     position: relative;
     min-height: 450px; 
     margin-bottom: 2rem;
@@ -89,14 +93,24 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    
+    /* 🛑 CORRECCIÓN CLAVE 2: Forzar ancho de la ventana y centrado */
+    /* Estira el contenedor a 100% del viewport y luego lo centra, anulando cualquier padding */
+    width: 100vw; 
+    margin-left: calc(50% - 50vw); 
+    
+    /* Recorta contenido que se desborde */
+    overflow: hidden; 
+    padding: 0; 
 }
 
 
-.hero > img {
+#hero-img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    /* La imagen ocupa el 100% de su padre (#hero, que ahora es 100vw) */
+    width: 100%; 
     height: 100%;
     object-fit: cover;
     filter: brightness(60%); 
@@ -104,7 +118,7 @@ main {
 }
 
 
-.hero h1 {
+#hero-msg h1 {
     color: white;
     font-size: 3.5rem;
     font-family: var(--heading-font);
@@ -114,61 +128,92 @@ main {
     position: absolute; 
     top: 10%; 
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); 
     padding-top: 0; 
     margin-bottom: 0; 
     width: 90%;
 }
 
-.hero article {
-    position: absolute; 
-    bottom: 40px; 
-    left: 50%;
-    transform: translateX(-50%);
+#hero-msg h4 {
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     z-index: 2;
+    text-align: center;
+    position: absolute; 
+    top: 25%; 
+    left: 50%;
+    transform: translateX(-50%); 
     width: 90%;
-    max-width: 800px;
-    margin-bottom: 0;
 }
 
-.hero-content-box {
+/* Nota: Los estilos del Hero que tenías antes (como .hero article o .hero-content-box) 
+   fueron eliminados/adaptados porque no aparecen en el HTML de About Us. */
+
+
+/* --- INDEX.HTML STYLES (Home Grid & Newsletter) --- */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.rivers-card, .guides-card {
     background-color: var(--panel-color);
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
     border-radius: 8px;
-   
-    display: block; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.hero-content-box h2 {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-
-.hero-content-box p {
-    line-height: 1.6;
-}
-
-
-.hero article img { 
-    float: right; 
-}
-
-
-.hero article img,
-.hero-content-box .hero-thumb { 
-    width: 100px;
-    height: 100px;
+.card-img {
+    width: 100%;
+    height: 250px;
     object-fit: cover;
     border-radius: 4px;
-    flex-shrink: 0;
-    filter: none;
-    margin-top: 5px;
-    margin-left: 15px; 
+    margin-bottom: 15px;
+    display: block; 
+    margin: 0 auto 15px auto; 
+}
+
+.rivers-card {
+    grid-column: 2 / span 4;
+}
+
+.guides-card {
+    grid-column: 6 / span 4;
+}
+
+/* Newsletter */
+#newsletter-background {
+    grid-column: 1 / 11;
+    grid-row: 2; 
+    background-color: var(--primary-color);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+#newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#newsletter-form input {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 1em;
 }
 
 
+/* --- ABOUT.HTML STYLES (Historia y Galería) --- */
 .history-section {
     padding: 2.5rem 0;
     text-align: center;
@@ -199,9 +244,29 @@ main {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: block; 
+    margin: 0 auto; 
+}
+
+/* Misión */
+.mission-box {
+    background-color: var(--panel-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 30px auto; 
+    text-align: left;
+}
+.mission-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.8em;
 }
 
 
+/* Galería de Aventuras (No presente en el HTML dado, pero se mantiene si es compartido) */
 .adventures {
     padding: 3rem 0;
     text-align: center;
@@ -216,7 +281,7 @@ main {
 
 .adventure-gallery {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; 
     gap: 1rem;
     padding: 1rem 0;
 }
@@ -247,122 +312,94 @@ main {
 }
 
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2%;
+/* --- TRIPS.HTML STYLES --- */
+.trips-main h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.trips-cta {
+    text-align: center;
+    padding: 40px;
+    background-color: var(--secondary-color); 
+    margin: 20px auto 50px auto;
+    border-radius: 8px;
+    max-width: 800px;
+}
+
+.trips-cta p {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.trip-descriptions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+.trip-card {
+    background-color: var(--panel-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.trip-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: block; 
+    margin: 0 auto 15px auto; 
+}
+
+.trip-card h2 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.trips-table-container {
+    padding: 30px 20px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+}
+
+.trips-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.trips-table-container th, .trips-table-container td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.trips-table-container th {
     background-color: var(--primary-color);
     color: white;
-    border-top: 5px solid var(--secondary-color);
-    margin-top: 3rem;
+    font-weight: bold;
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-.social-links, .socialmedia { 
-    display: flex;
-    gap: 15px;
-}
-
-.social-links a img, .socialmedia a img {
-    width: 30px;
-    height: 30px;
-    background: var(--bg-color);
-    padding: 5px;
-    border-radius: 50%;
-    transition: opacity 0.3s;
+.trips-table-container tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 
-@media screen and (max-width: 900px) {
-    .history-grid {
-        grid-template-columns: 1fr; 
-        text-align: center;
-    }
-    .history-grid .hist-text {
-        text-align: center;
-    }
-    .history-grid img {
-        margin: 0 auto;
-    }
-
-    .adventure-gallery {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .adventure-gallery figure {
-        flex: 1 1 40%;
-    }
-    
-    .hero h1 {
-        position: static; 
-        transform: none;
-        padding-top: 20px;
-    }
-    
-    .hero article, .hero-content-box {
-        position: static; 
-        transform: none;
-        margin-bottom: 20px;
-        display: block; 
-    }
-    .hero {
-        min-height: auto;
-    }
-    
-    .hero article img, 
-    .hero-content-box .hero-thumb {
-        float: none;
-        margin: 10px auto;
-        display: block;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    header {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    nav {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding-top: 1rem;
-        margin-right: 0;
-    }
-    
-    .hero {
-        height: auto;
-        padding-bottom: 2rem;
-    }
-
-    .hero h1 {
-        padding-top: 1rem;
-        font-size: 2.5rem;
-    }
-    
-    .hero-content-box {
-        flex-direction: column;
-        margin-top: 0;
-        max-width: 95%;
-    }
-
-    .adventure-gallery figure {
-        flex: 1 1 80%;
-    }
-    
-    footer {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-}
-/* CONTACT.HTML STYLES */
+/* --- CONTACT.HTML STYLES (Formulario y Equipo) --- */
 
 .contact-main {
     max-width: 900px;
@@ -394,7 +431,7 @@ footer p {
 .map-container iframe {
     width: 100%;
     height: 100%;
-   
+    
     border: 1px solid #ccc; 
 }
 
@@ -462,32 +499,32 @@ footer p {
 
 .contact-form button[type="submit"] {
     padding: 12px;
-    background-color: var(--primary-color, #333); 
+    background-color: var(--primary-color); 
     color: white; 
     border: none;
-    border-radius: 5px;
+    border-radius: 5-px;
     font-size: 1.1em;
     cursor: pointer;
     margin-top: 15px;
 }
 
 .contact-form button[type="submit"]:hover {
-    background-color: var(--hover-color, #555);
-    color: white; 
+    background-color: var(--secondary-color); 
+    color: var(--primary-color); 
 }
 
 
 .employee-profiles {
     grid-column: 1 / 3; 
     text-align: center;
-    padding: 40px 0;
+    padding: 4_0px 0;
     border-top: 1px solid #ccc;
     margin-top: 20px;
 }
 
 .profile-grid {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; 
     gap: 20px;
     margin-top: 30px;
 }
@@ -504,4 +541,167 @@ footer p {
     object-fit: cover;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- FOOTER --- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2%;
+    background-color: var(--primary-color);
+    color: white;
+    border-top: 5px solid var(--secondary-color);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.social-links, .socialmedia { 
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a img, .socialmedia a img {
+    width: 30px;
+    height: 30px;
+    background: var(--bg-color);
+    padding: 5px;
+    border-radius: 50%;
+    transition: opacity 0.3s;
+}
+
+
+/* --- MEDIA QUERIES --- */
+
+@media screen and (max-width: 900px) {
+    /* About Us (History Grid) adjustments */
+    .history-grid {
+        grid-template-columns: 1fr; 
+        text-align: center;
+    }
+    .history-grid .hist-text {
+        text-align: center;
+    }
+    .history-grid img {
+        margin: 0 auto;
+    }
+    
+    /* Index Home Grid adjustments */
+    .home-grid {
+        grid-template-columns: 1fr; 
+        gap: 40px;
+    }
+
+    .rivers-card, .guides-card {
+        grid-column: 1 / -1; 
+    }
+    
+    #newsletter-background {
+        grid-column: 1 / -1; 
+        grid-row: 3;
+    }
+
+    /* Adventures/Gallery adjustments */
+    .adventure-gallery {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .adventure-gallery figure {
+        flex: 1 1 40%;
+    }
+    
+    /* Hero adjustments */
+    #hero-msg {
+        position: static; 
+        transform: none;
+        padding-top: 20px;
+    }
+    
+    #hero-msg h1, #hero-msg h4 {
+        position: static; 
+        transform: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #hero {
+        min-height: auto;
+     
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden; 
+    }
+    
+
+    /* Contact Page adjustments */
+    .contact-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-profiles {
+        grid-column: 1 / 2;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* Header/Nav adjustments */
+    header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        margin-right: 0;
+    }
+    
+    /* Hero adjustments */
+    #hero {
+        height: auto;
+        padding-bottom: 2rem;
+       
+        width: 100vw; 
+        margin-left: calc(50% - 50vw); 
+    }
+
+    #hero-msg h1 {
+        padding-top: 1rem;
+        font-size: 2.5rem;
+    }
+    
+    /* Adventures/Gallery adjustments */
+    .adventure-gallery figure {
+        flex: 1 1 80%;
+    }
+    
+    /* Contact Page adjustments (Equipos) */
+    .profile-grid {
+        flex-direction: column;
+        align-items: center; 
+        gap: 20px;
+    }
+    
+    /* Footer adjustments */
+    footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    /* Trips adjustments (Mobile table) */
+    .trips-table-container {
+        padding: 0;
+    }
 }
